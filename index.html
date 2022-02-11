@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .quad-calc{
+             margin: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quad-calc">
+        <strong>Quadratic Calculator</strong><br>
+        <label for='a'>A:</label>
+        <input type="text" name='a' id='a'><br>
+        <label for='b'>B:</label>
+        <input type="text" name='b' id='b'><br>
+        <label for='c'>C:</label>
+        <input type="text" name='c' id='c'><br>
+        <button class="quad-calc-btn">Calculate</button><br>
+        <div class="quad-result"></div>
+    </div>
+<script>
+    function quadCalc() {
+        a = parseFloat(document.querySelector('#a').value);
+        b = parseFloat(document.querySelector('#b').value);
+        c = parseFloat(document.querySelector('#c').value);
+        if (isNaN(a) || isNaN(b) || isNaN(c)){
+            quadResult.textContent = "use number dumbass";
+            return;
+        }
+        root1 = (- b + Math.sqrt(b * b - 4 * a * c))/ (2 * a)
+        root2 = (- b - Math.sqrt(b * b - 4 * a * c))/ (2 * a)
+        if (Number.isNaN(root1)){quadResult.textContent = "No root"; return;} 
+        if (root1 == root2) {quadResult.textContent = "The root is " + Math.round(root1 * 10000)/10000; return;}
+        else {
+            quadResult.textContent = "The root is " + Math.round(root1 * 10000)/10000 + " or " + Math.round(root2 * 10000)/10000;
+            return;
+        }
+    }
+    const quadCalcBtn = document.querySelector('.quad-calc-btn');
+    const quadResult = document.querySelector('.quad-result');
+    quadCalcBtn.addEventListener('click', quadCalc);
+</script>
+</body>
+</html>
